@@ -2,77 +2,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Exercise Record</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<title>享健你，遇見更好的自己．</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/gymstyle.css">
+<style>
 
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .form-container {
-            width: 50%;
-            margin: 0 auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-container label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        .form-container input[type="text"], .form-container input[type="number"], .form-container input[type="date"] {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-
-        .form-container input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #0056b3;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .form-container input[type="submit"]:hover {
-            background-color: lightblue;
-        }
-
-        .back-link {
-            display: block;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .error-message {
-            color: red;
-            padding: 10px;
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-    </style>
+</style>
 </head>
+<body>
+    <div id="header">
+        <h1>享健你，遇見更好的自己．</h1>
+        <h2>你，今天健了嗎？</h2>
+    </div>
+
+    <!-- ✅ 導覽列 -->
+    <div id="navigation">
+		<ul>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/course/HealthManagement.jsp">首頁</a></li>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/membercenter.jsp" class="active">會員管理</a></li>
+			<li><a href="#">商城購物</a></li>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/fitness/index.jsp">健身成效</a></li>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/course/index.jsp">課程管理</a></li>
+            <li><a href="http://localhost:8080/HealthManagement/api/Social/post">社群論壇</a></li> <!-- ✅ 修正網址 -->
+		</ul>
+    </div>
+	<br>
 <body>
 
     <h1>Update Exercise Record</h1>
@@ -96,8 +52,9 @@
         </form>
 
         <!-- 返回到紀錄頁面 -->
-        <a class="back-link" href="../../api/fitness/progress?userId=${record.userId}">Back to Records</a>
+        <a class="back-link" href="../../api/fitness/progress?userId=${record.userId}">回到運動紀錄首頁</a>
     </div>
-
+     <div id="footer">
+        <p>&copy; 2025 享健你. 讓運動成為習慣，遇見更好的自己。</p>
 </body>
 </html>

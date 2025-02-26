@@ -47,9 +47,14 @@ public class ExerciseRecordController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            String action = request.getParameter("action");
-
-            if ("update".equals(action)) {
+        	String action = request.getParameter("action");
+            if ("all".equals(action)) {
+            	 List<ExerciseRecord> records = exerciseRecordService.getAllExerciseRecords();
+                request.setAttribute("records",records);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/fitness/exerciseRecords.jsp");
+                dispatcher.forward(request, response);
+                }
+            else if ("update".equals(action)) {
                 int recordId = Integer.parseInt(request.getParameter("recordId"));
                 try (Connection conn = exerciseRecordService.getConnection()) {
                     ExerciseRecordDAO dao = new ExerciseRecordDAO(conn);

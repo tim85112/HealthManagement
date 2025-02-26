@@ -12,17 +12,17 @@
         <h2>你，今天健了嗎？</h2>
     </div>
 
+        <!-- ✅ 導覽列 -->
     <div id="navigation">
-        <ul>
-            <li><a href="HealthManagement.jsp">首頁</a></li>
-            <li><a href="#">會員管理</a></li>
-            <li><a href="#">商城購物</a></li>
-            <li><a href="#">健身成效</a></li>
-            <li><a href="index.jsp" class="active">課程管理</a></li>
-            <li><a href="#">社群論壇</a></li>
-        </ul>
+		<ul>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/course/HealthManagement.jsp">首頁</a></li>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/membercenter.jsp" class="active">會員管理</a></li>
+			<li><a href="#">商城購物</a></li>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/fitness/index.jsp">健身成效</a></li>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/course/index.jsp">課程管理</a></li>
+            <li><a href="http://localhost:8080/HealthManagement/api/Social/post">社群論壇</a></li> <!-- ✅ 修正網址 -->
+		</ul>
     </div>
-	<br>
     <div id="content">
         <div>
             <ul>
