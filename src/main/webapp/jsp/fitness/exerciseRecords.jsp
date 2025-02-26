@@ -86,7 +86,7 @@
                                 <input type="hidden" name="userId" value="${record.userId}">
                                 <input type="submit" value="Delete" class="delete">
                             </form>
-                        </td>
+                        </td> 
                     </tr>
                 </c:forEach>
             </tbody>
