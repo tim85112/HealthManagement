@@ -37,8 +37,12 @@ public class ExerciseRecordDAO {
 
     // 查詢用戶的所有運動紀錄
     public List<ExerciseRecord> getExerciseRecords(int userId) {
-        String sql = "SELECT * FROM exercise_records WHERE user_id = ?";
+        String sql = "SELECT e.record_id, e.user_id, e.exercise_type, e.exercise_duration, e.calories_burned, e.exercise_date, u.name " +
+                     "FROM exercise_records e " +
+                     "JOIN users u ON e.user_id = u.id " +
+                     "WHERE e.user_id = ?";
         List<ExerciseRecord> records = new ArrayList<>();
+
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, userId);
             try (ResultSet rs = ps.executeQuery()) {
@@ -49,7 +53,13 @@ public class ExerciseRecordDAO {
                     record.setExerciseType(rs.getString("exercise_type"));
                     record.setExerciseDuration(rs.getInt("exercise_duration"));
                     record.setCaloriesBurned(rs.getDouble("calories_burned"));
-                    record.setExerciseDate(rs.getDate("exercise_date").toString());  
+                    record.setExerciseDate(rs.getDate("exercise_date").toString());
+
+                    // 设置用户信息
+                    User user = new User();
+                    user.setName(rs.getString("name"));
+                    record.setUser(user);
+
                     records.add(record);
                 }
             }
@@ -58,6 +68,7 @@ public class ExerciseRecordDAO {
         }
         return records;
     }
+
     
     //查詢所有用戶的所有運動紀錄
     public List<ExerciseRecord> getAllExerciseRecords() {
