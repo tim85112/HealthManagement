@@ -78,7 +78,6 @@ public class ExerciseRecordDAO {
                 record.setExerciseDate(rs.getDate("exercise_date").toString());
                 
                 User user = new User();
-                user.setId(rs.getInt("id"));
                 user.setName(rs.getString("name"));
                 record.setUser(user);  // 設置用戶信息
                 
@@ -136,8 +135,8 @@ public class ExerciseRecordDAO {
 
     // 刪除運動紀錄
     public boolean deleteExerciseRecord(int recordId) {
-        String query = "DELETE FROM exercise_records WHERE record_id = ?";
-        try (PreparedStatement ps = conn.prepareStatement(query)) {
+        String sql = "DELETE FROM exercise_records WHERE record_id = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, recordId);
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
