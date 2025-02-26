@@ -2,61 +2,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Exercise Record</title>
-    <style>
-        /* 表單樣式 */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<title>享健你，遇見更好的自己．</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/gymstyle.css">
+<style>
 
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        form {
-            margin: 20px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            display: block;
-            margin: 5px 0;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 8px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #6D91A0;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+</style>
 </head>
+<body>
+    <div id="header">
+        <h1>享健你，遇見更好的自己．</h1>
+        <h2>你，今天健了嗎？</h2>
+    </div>
+
+    <!-- ✅ 導覽列 -->
+    <div id="navigation">
+		<ul>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/course/HealthManagement.jsp">首頁</a></li>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/membercenter.jsp" class="active">會員管理</a></li>
+			<li><a href="#">商城購物</a></li>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/fitness/index.jsp">健身成效</a></li>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/course/index.jsp">課程管理</a></li>
+            <li><a href="http://localhost:8080/HealthManagement/api/Social/post">社群論壇</a></li> <!-- ✅ 修正網址 -->
+		</ul>
+    </div>
+	<br>
 <body>
 
     <h1>Add New Exercise Record</h1>
@@ -65,23 +37,23 @@
     <form action="../../api/fitness/progress" method="post">
         <input type="hidden" name="action" value="add">
 
-        <label for="userId">User ID:</label>
+        <label for="userId">用戶 ID:</label>
         <input type="number" name="userId" required placeholder="Enter User ID">
 
-        <label for="exerciseType">Exercise Type:</label>
+        <label for="exerciseType">運動類型:</label>
         <select name="exerciseType" required>
             <option value="瑜伽" selected>瑜伽 (Yoga)</option>
             <option value="重訓">重訓 (Weight Training)</option>
             <option value="有氧">有氧 (Cardio)</option>
         </select>
 
-        <label for="exerciseDuration">Duration (minutes):</label>
+        <label for="exerciseDuration">運動時長 (分鐘):</label>
         <input type="number" name="exerciseDuration" required placeholder="Enter Duration" value="20">
 
-        <label for="exerciseDate">Exercise Date:</label>
+        <label for="exerciseDate">運動日期:</label>
         <input type="date" name="exerciseDate" required id="exerciseDate">
 
-        <button type="submit">Add Record</button>
+        <button type="submit">新增紀錄</button>
     </form>
 
     <script>
@@ -89,6 +61,7 @@
         const today = new Date().toISOString().split('T')[0]; // 轉換為 'YYYY-MM-DD' 格式
         document.getElementById('exerciseDate').value = today; // 設置為 input 的預設值
     </script>
-
+     <div id="footer">
+        <p>&copy; 2025 享健你. 讓運動成為習慣，遇見更好的自己。</p>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package model.fitness;
 
+import model.User;
+
 public class ExerciseRecord {
     private Integer  recordId;
     private Integer userId;
@@ -7,6 +9,7 @@ public class ExerciseRecord {
     private int exerciseDuration;
     private double caloriesBurned;  
     private String exerciseDate;
+    private User user;
   
 
     public ExerciseRecord(Integer recordId,Integer userId, String exerciseType, int exerciseDuration,
@@ -61,7 +64,15 @@ public class ExerciseRecord {
         return caloriesBurned;  
     }
 
-    public void setCaloriesBurned(double caloriesBurned) {
+    public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public void setCaloriesBurned(double caloriesBurned) {
         this.caloriesBurned = caloriesBurned;  
     }
 
