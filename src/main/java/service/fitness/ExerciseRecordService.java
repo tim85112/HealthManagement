@@ -101,4 +101,11 @@ public class ExerciseRecordService {
 			return dao.getAllExerciseRecords();
 		}
 	}
+	// 查詢用戶的運動資訊模糊查詢
+		public List<ExerciseRecord> getExerciseRecordByName(String name) throws SQLException {
+			try (Connection conn = getConnection()) {
+				ExerciseRecordDAO dao = new ExerciseRecordDAO(conn);
+				return dao.getExerciseRecordsByName(name);
+			}
+		}
 }

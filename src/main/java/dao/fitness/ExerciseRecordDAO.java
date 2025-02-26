@@ -68,6 +68,41 @@ public class ExerciseRecordDAO {
         }
         return records;
     }
+    
+ // 查詢用戶的所有運動紀錄，根據用戶名字進行模糊查詢
+    public List<ExerciseRecord> getExerciseRecordsByName(String name) {
+        String sql = "SELECT e.record_id, e.user_id, e.exercise_type, e.exercise_duration, e.calories_burned, e.exercise_date, u.name " +
+                     "FROM exercise_records e " +
+                     "JOIN users u ON e.user_id = u.id " +
+                     "WHERE u.name LIKE ?";
+        List<ExerciseRecord> records = new ArrayList<>();
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, "%" + name + "%");  // 模糊匹配名字
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    ExerciseRecord record = new ExerciseRecord();
+                    record.setRecordId(rs.getInt("record_id"));
+                    record.setUserId(rs.getInt("user_id"));
+                    record.setExerciseType(rs.getString("exercise_type"));
+                    record.setExerciseDuration(rs.getInt("exercise_duration"));
+                    record.setCaloriesBurned(rs.getDouble("calories_burned"));
+                    record.setExerciseDate(rs.getDate("exercise_date").toString());
+
+                    // 设置用户信息
+                    User user = new User();
+                    user.setName(rs.getString("name"));
+                    record.setUser(user);
+
+                    records.add(record);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return records;
+    }
+
 
     
     //查詢所有用戶的所有運動紀錄
