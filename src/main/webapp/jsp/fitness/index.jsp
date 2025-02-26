@@ -38,16 +38,13 @@
     </form>
 
     <!-- 查詢運動紀錄 -->
-    <form action=../../api/fitness/progress method="get">
-        <label for="userId">用戶 ID:</label>
-        <input type="number" name="userId" required placeholder="Enter User ID">
-        <button type="submit">查詢</button>
+    <form action=../../jsp/fitness/findUserRecords.jsp method="get">
+        <button type="submit">以ID查詢用戶紀錄</button>
     </form>
     
     <!-- 查詢所有用戶運動紀錄 -->
     <form action=../../api/fitness/progress method="get">
-        <label for="">All User Records:</label>
-        <button type="submit" name="action" value="all">Search All Users Records</button>
+        <button type="submit" name="action" value="all">所有用戶紀錄</button>
     </form>
     </div>
      <div id="footer">

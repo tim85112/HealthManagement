@@ -29,7 +29,6 @@
     <div align="center">
     
     <h1>運動紀錄</h1>
-
     <!-- 顯示錯誤訊息 -->
     <c:if test="${not empty errorMessage}">
         <div class="error-message">
@@ -39,7 +38,7 @@
 
     <!-- 顯示成功訊息 -->
     <c:if test="${not empty successMessage}">
-        <div class="alert-success">
+        <div style="color: #808080;">
             <c:choose>
                 <c:when test="${successMessage == 'Record Deleted Successfully'}">
                     <strong>Success:</strong> Record Deleted Successfully
@@ -50,6 +49,13 @@
             </c:choose>
         </div>
     </c:if>
+    
+        <!-- 查詢運動紀錄 -->
+    <form action=../../api/fitness/progress method="get">
+        <label for="userId">用戶 ID:</label>
+        <input type="text" name="userId" required placeholder="Enter User ID">
+        <button type="submit">查詢</button>
+    </form>
 
     <!-- 顯示運動紀錄 -->
     <c:if test="${not empty records}">
@@ -62,7 +68,7 @@
                     <th>運動時長（分鐘）</th>
                     <th>卡路里消耗</th>
                     <th>日期</th>
-                    <th>管理</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -94,16 +100,12 @@
 
         <!-- 顯示資料總數 -->
         <div class="record-count">
-        <p>總共有: ${fn:length(records)} 筆資料</p>
+            <p>總共有: ${fn:length(records)} 筆資料</p>
         </div>
     </c:if>
 
-    <c:if test="${empty records}">
-        <p>No records found for the given User ID.</p>
-    </c:if>
-
     <!-- 返回主畫面的按鈕 -->
-    <button class="back-button" onclick="window.location.href='../../jsp/fitness/index.jsp'">返回</button>
+    <button class="back-button" onclick="window.location.href='../../jsp/fitness/index.jsp'">回到運動紀錄首頁</button>
 </div>
     <div id="footer">
         <p>&copy; 2025 享健你. 讓運動成為習慣，遇見更好的自己。</p>

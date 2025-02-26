@@ -65,8 +65,8 @@ public class ExerciseRecordService {
 
 	// 獲取用戶體重
 	private double getUserWeight(int userId) throws SQLException {
-		String query = "SELECT Weight FROM BodyMetrics WHERE UserID = ?";
-		try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(query)) {
+		String sql = "SELECT Weight FROM BodyMetrics WHERE UserID = ?";
+		try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 			ps.setInt(1, userId);
 			try (ResultSet rs = ps.executeQuery()) {
 				if (rs.next()) {

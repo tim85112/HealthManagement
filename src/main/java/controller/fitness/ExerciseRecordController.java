@@ -70,7 +70,7 @@ public class ExerciseRecordController extends HttpServlet {
                 }
             } else if ("add".equals(action)) {
                 User user = getUserFromRequest(request);
-                request.setAttribute("userId", user.getId()); // 修改為 getId()
+                request.setAttribute("userId", user.getId());
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/fitness/addExerciseRecord.jsp");
                 dispatcher.forward(request, response);
             } else {
