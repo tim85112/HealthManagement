@@ -48,7 +48,6 @@ public class ExerciseRecordController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String action = request.getParameter("action");
-            System.out.println("Action: " + action);  // 打印 action 參數來檢查傳遞的值
             
             // 如果 action 是 'all'，顯示所有運動紀錄
             if ("all".equals(action)) {
@@ -80,10 +79,10 @@ public class ExerciseRecordController extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/fitness/addExerciseRecord.jsp");
                 dispatcher.forward(request, response);
 
-             // 如果沒有提供 'action' 或者不符合上述條件，根據 userId 或 name 查詢
+            // 如果沒有提供 'action' 或其他條件，根據 userId 或 name 查詢
             } else {
                 String userIdStr = request.getParameter("userId");
-                String name = request.getParameter("name"); // 這裡接受用戶的名字進行模糊查詢
+                String name = request.getParameter("name");
 
                 // 驗證：如果 userId 和 name 都沒有填寫，設置錯誤訊息
                 if ((userIdStr == null || userIdStr.isEmpty()) && (name == null || name.isEmpty())) {
@@ -110,6 +109,10 @@ public class ExerciseRecordController extends HttpServlet {
                 } else if (name != null && !name.isEmpty()) {
                     // 根據用戶名字進行模糊查詢
                     records = exerciseRecordService.getExerciseRecordByName(name);
+                    if (records == null || records.isEmpty()) {
+                        // 如果沒有找到對應的紀錄，拋出一個 ServletException
+                        throw new ServletException("找不到該用戶，名字: " + name);
+                    }
                 }
 
                 request.setAttribute("records", records);
@@ -121,6 +124,7 @@ public class ExerciseRecordController extends HttpServlet {
             handleError(e, request, response);
         }
     }
+
 
 
     // 處理 POST 請求，新增、更新或刪除運動紀錄
@@ -158,18 +162,13 @@ public class ExerciseRecordController extends HttpServlet {
 
             request.setAttribute("successMessage", "新增成功!");
 
-            // 根據 action 決定返回頁面
-            String action = request.getParameter("action");
+
             List<ExerciseRecord> records = exerciseRecordService.getExerciseRecords(record.getUserId());
             request.setAttribute("records", records);
 
-            if ("all".equals(action)) {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/fitness/exerciseRecords.jsp");
-                dispatcher.forward(request, response);
-            } else {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/fitness/findUserRecords.jsp");
                 dispatcher.forward(request, response);
-            }
+
         } catch (Exception e) {
             handleError(e, request, response);
         }
@@ -194,15 +193,9 @@ public class ExerciseRecordController extends HttpServlet {
             List<ExerciseRecord> records = exerciseRecordService.getExerciseRecords(record.getUserId());
             request.setAttribute("records", records);
 
-            // 強制設為 action=all 來跳轉到顯示所有紀錄頁面
-            String action = "all";  // 強制設為 'all'
-            if ("all".equals(action)) {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/fitness/exerciseRecords.jsp");
-                dispatcher.forward(request, response);
-            } else {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/fitness/findUserRecords.jsp");
                 dispatcher.forward(request, response);
-            }
+            
         } catch (Exception e) {
             handleError(e, request, response);
         }
@@ -230,18 +223,12 @@ public class ExerciseRecordController extends HttpServlet {
 
             request.setAttribute("successMessage", "刪除成功!");
 
-            // 根據 action 強制設為 action=all 來跳轉到顯示所有紀錄頁面
-            String action = "all";  // 強制設為 'all'
             List<ExerciseRecord> records = exerciseRecordService.getExerciseRecords(userId);
             request.setAttribute("records", records);
 
-            if ("all".equals(action)) {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/fitness/exerciseRecords.jsp");
-                dispatcher.forward(request, response);
-            } else {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/fitness/findUserRecords.jsp");
                 dispatcher.forward(request, response);
-            }
+         
         } catch (Exception e) {
             handleError(e, request, response);
         }

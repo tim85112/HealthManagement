@@ -59,13 +59,13 @@
 		</c:if>
 		<!-- 查詢運動紀錄 -->
 		<form action="../../api/fitness/progress" method="get">
-			<label for="userId">用戶 ID:</label> <input type="text" name="userId"
+			<div><label for="userId">用戶 I D :</label> <input type="text" name="userId"
 				placeholder="Enter User ID">
-			<button type="submit">查詢</button>
+			<button type="submit">查詢</button></div>
 			<br>
-			<br> <label for="name">用戶名字:</label> <input type="text"
+			<br><div> <label for="name">用戶名字:</label> <input type="text"
 				name="name" placeholder="Enter User Name">
-			<button type="submit">查詢</button>
+			<button type="submit">查詢</button></div>
 
 		</form>
 		<!-- 如果兩者都沒填，顯示錯誤訊息 -->
@@ -86,7 +86,7 @@
 						<th>運動時長（分鐘）</th>
 						<th>卡路里消耗</th>
 						<th>日期</th>
-						<th>Actions</th>
+						<th>管理</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -101,14 +101,14 @@
 							<td>
 								<!-- 更新按鈕，會跳轉到更新頁面 --> <a
 								href="../../api/fitness/progress?action=update&recordId=${record.recordId}&userId=${record.userId}">
-									<input type="button" value="Update" class="update">
+									<input type="button" value="更新" class="update">
 							</a> <!-- 刪除表單 -->
 								<form action="../../api/fitness/progress" method="post"
 									style="display: inline;">
 									<input type="hidden" name="action" value="delete"> <input
 										type="hidden" name="recordId" value="${record.recordId}">
 									<input type="hidden" name="userId" value="${record.userId}">
-									<input type="submit" value="Delete" class="delete">
+									<input type="submit" value="刪除" class="delete">
 								</form>
 							</td>
 						</tr>
@@ -129,7 +129,7 @@
 		</div>
 	</div>
 	<div id="footer">
-		<p>&copy; 2025 享健你. 讓運動成為習慣，遇見更好的自己。</p>
+		<p>&copy; 2025 享健你. All Rights Reserved.</p>
 	</div>
 </body>
 </html>

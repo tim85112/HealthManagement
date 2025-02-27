@@ -49,7 +49,7 @@
 
 				<table border="1">
 					<tr>
-					<td>運動類型：</td>
+					<td>運 動 類 型：</td>
 					<td><select name="exerciseType" required>
 							<option value="瑜伽" selected>瑜伽 (Yoga)</option>
 							<option value="重訓">重訓 (Weight Training)</option>
@@ -63,7 +63,7 @@
 							required min="1"></td>
 					</tr>
 					<tr>
-						<td>運動日期:</td>
+						<td>運 動 日 期:</td>
 						<td><input type="date" id="exerciseDate" name="exerciseDate"
 							value="${record.exerciseDate}" required></td>
 					</tr>
@@ -78,6 +78,6 @@
 		</div>
 	</div>
 	<div id="footer">
-		<p>&copy; 2025 享健你. 讓運動成為習慣，遇見更好的自己。</p>
+		<p>&copy; 2025 享健你. All Rights Reserved.</p>
 </body>
 </html>
