@@ -10,7 +10,52 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/styles/gymstyle.css">
 <style>
+/* 讓文字內容的td寬度不會過大 */
+table td {
+    text-align: justify;
+    word-spacing: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    white-space: nowrap; /* 防止文字換行 */
+}
+
+/* 為包含文字的 td 設置固定的寬度 */
+table td:first-child { 
+    width: 20%; /* 可以根據需要調整寬度 */
+}
+
+/* 讓表單元素 (例如 textarea) 寬度為100% */
+table td input, table td select, table td textarea {
+    width: 100% !important; /* 強制將寬度設置為100% */
+    padding: 8px;
+    font-size: 1em;
+    box-sizing: border-box; /* 計算邊框和內邊距 */
+}
+
+/* 針對textarea設置特殊寬度 */
+textarea {
+    width: 100% !important; /* 強制將寬度設置為100% */
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* 計算邊框和內邊距 */
+}
+
+button {
+	padding: 10px 20px;
+	background-color: #777;
+	color: white;
+	border: none;
+	cursor: pointer;
+	width: 200px; 
+	font-size: 1em;
+}
+
+button:hover {
+	background-color: #33;
+}
 </style>
+
 </head>
 <body>
 	<div id="header">
@@ -46,12 +91,12 @@
 			<input type="hidden" name="action" value="add">
 			<table border="1" id="">
 				<tr>
-					<td>用戶 ID：</td>
+					<td>用 戶  I  D：</td>
 					<td><input type="text" name="userId" required
 						placeholder="Enter User ID"></td>
 				</tr>
 				<tr>
-					<td>運動類型：</td>
+					<td>運 動 類 型：</td>
 					<td><select name="exerciseType" required>
 							<option value="瑜伽" selected>瑜伽 (Yoga)</option>
 							<option value="重訓">重訓 (Weight Training)</option>
@@ -59,19 +104,20 @@
 					</select></td>
 				</tr>
 				<tr>
-					<td>運動時長 (分鐘)：</td>
+					<td>運 動 時 長(分鐘)：</td>
 					<td><input type="number" name="exerciseDuration" required
 						placeholder="Enter Duration" value="20"></td>
 				</tr>
 				<tr>
-					<td>運動日期：</td>
+					<td>運 動 日 期：</td>
 					<td><input type="date" name="exerciseDate" required
 						id="exerciseDate"></td>
 				</tr>
-				<tr>
-					 <button type="submit">Add Record</button>
-				</tr>
+
 			</table>
+
+			<button type="submit">確認</button>
+
 		</form>
 
 
@@ -81,11 +127,13 @@
 			document.getElementById('exerciseDate').value = today; // 設置為 input 的預設值
 		</script>
 
-	<!-- 返回主畫面的按鈕 -->
- <a href="http://localhost:8080/HealthManagement/jsp/fitness/index.jsp" class="back-button">返回</a>
-</div>
+		<!-- 返回主畫面的按鈕 -->
+		<a href="http://localhost:8080/HealthManagement/jsp/fitness/index.jsp"
+			class="back-button">返回</a>
+	</div>
 
 	<div id="footer">
-		<p>&copy; 2025 享健你. 讓運動成為習慣，遇見更好的自己。</p></div>
+		<p>&copy; 2025 享健你. All Rights Reserved.</p>
+	</div>
 </body>
 </html>

@@ -26,7 +26,7 @@
             <li><a href="http://localhost:8080/HealthManagement/api/Social/post">社群論壇</a></li>
         </ul>
     </div>
-    <div align="center">
+    <div id="content" align="center">
     
     <h1>運動紀錄</h1>
 
@@ -77,14 +77,14 @@
                         <td>
                             <!-- 更新按鈕，會跳轉到更新頁面 -->
                             <a href="../../api/fitness/progress?action=update&recordId=${record.recordId}&userId=${record.userId}">
-                                <input type="button" value="Update" class="update">
+                                <input type="button" value="更新" class="update">
                             </a> 
                             <!-- 刪除表單 -->
                             <form action="../../api/fitness/progress" method="post" style="display: inline;">
                                 <input type="hidden" name="action" value="delete">
                                 <input type="hidden" name="recordId" value="${record.recordId}">
                                 <input type="hidden" name="userId" value="${record.userId}">
-                                <input type="submit" value="Delete" class="delete">
+                                <input type="submit" value="刪除" class="delete">
                             </form>
                         </td> 
                     </tr>
@@ -100,13 +100,14 @@
 
     <c:if test="${empty records}">
         <p>No records found for the given User ID.</p>
+        <p>該用戶沒有運動紀錄</p>
     </c:if>
 
     <!-- 返回主畫面的按鈕 -->
     <button class="back-button" onclick="window.location.href='../../jsp/fitness/index.jsp'">返回</button>
 </div>
     <div id="footer">
-        <p>&copy; 2025 享健你. 讓運動成為習慣，遇見更好的自己。</p>
+       <p>&copy; 2025 享健你. All Rights Reserved.</p>
     </div>
 </body>
 </html>

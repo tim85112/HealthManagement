@@ -33,9 +33,9 @@
     <h1>Error</h1>
     <p>${errorMessage}</p>
 
-<button class="back-button" onclick="window.location.href='../../jsp/fitness/index.jsp'">回到運動紀錄首頁</button>
+<button class="back-button" onclick="window.location.href='../../jsp/fitness/index.jsp'">返回</button>
     
              <div id="footer">
-        <p>&copy; 2025 享健你. 讓運動成為習慣，遇見更好的自己。</p>
+        <p>&copy; 2025 享健你. All Rights Reserved.</p>
 </body>
 </html>
