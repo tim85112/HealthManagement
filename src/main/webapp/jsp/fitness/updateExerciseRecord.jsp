@@ -38,7 +38,7 @@
 	</div>
 	<br>
 <body>
-	<div align="center">
+	<div align="center" id="content">
 		<h1>更新運動紀錄</h1>
 
 		<div class="form-container">
@@ -49,13 +49,13 @@
 
 				<table border="1">
 					<tr>
-					<td>運 動 類 型：</td>
-					<td><select name="exerciseType" required>
-							<option value="瑜伽" selected>瑜伽 (Yoga)</option>
-							<option value="重訓">重訓 (Weight Training)</option>
-							<option value="有氧">有氧 (Cardio)</option>
-					</select></td>
-				</tr>
+						<td>運 動 類 型：</td>
+						<td><select name="exerciseType" required>
+								<option value="瑜伽" selected>瑜伽 (Yoga)</option>
+								<option value="重訓">重訓 (Weight Training)</option>
+								<option value="有氧">有氧 (Cardio)</option>
+						</select></td>
+					</tr>
 					<tr>
 						<td>運動時長 (分鐘):</td>
 						<td><input type="number" id="exerciseDuration"
@@ -68,7 +68,7 @@
 							value="${record.exerciseDate}" required></td>
 					</tr>
 				</table>
-				<br> <input type="submit" value="Update">
+				<input type="submit" value="確認">
 			</form>
 
 

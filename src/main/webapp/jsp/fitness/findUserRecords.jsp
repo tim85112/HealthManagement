@@ -10,6 +10,37 @@
 <title>享健你，遇見更好的自己．</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/styles/gymstyle.css">
+<style type="text/css">
+.update {
+	background-color: #c5c9a3;
+	color: white; /* 文字顏色為白色 */
+	padding: 12px 20px; /* 增加內邊距，使按鈕更大 */
+	border-radius: 3px; /* 讓按鈕邊角變圓 */
+	font-size: 1em; /* 字體大小 */
+}
+
+.update:hover {
+	background-color: #e3ebae; /* 滑鼠懸停時的顏色變化 */
+}
+
+input[type="submit"] {
+	border-radius: 3px;
+}
+
+button[type="submit"] {
+	background-color: #5d615d;
+	color: white;
+	padding: 5px 10px;
+	border: none;
+	cursor: pointer;
+	border-radius:3px;
+	font-size: 13px
+}
+
+button[type="submit"]:hover {
+	background-color: #868B86;
+}
+</style>
 </head>
 <body>
 	<div id="header">
@@ -59,13 +90,17 @@
 		</c:if>
 		<!-- 查詢運動紀錄 -->
 		<form action="../../api/fitness/progress" method="get">
-			<div><label for="userId">用戶 I D :</label> <input type="text" name="userId"
-				placeholder="Enter User ID">
-			<button type="submit">查詢</button></div>
-			<br>
-			<br><div> <label for="name">用戶名字:</label> <input type="text"
-				name="name" placeholder="Enter User Name">
-			<button type="submit">查詢</button></div>
+			<div>
+				<label for="userId">用戶 I D :</label> <input type="text"
+					name="userId" placeholder="Enter User ID">
+				<button type="submit">查詢</button>
+			</div>
+			<br> <br>
+			<div>
+				<label for="name">用戶名字:</label> <input type="text" name="name"
+					placeholder="Enter User Name">
+				<button type="submit">查詢</button>
+			</div>
 
 		</form>
 		<!-- 如果兩者都沒填，顯示錯誤訊息 -->
@@ -124,7 +159,7 @@
 
 		<!-- 返回主畫面的按鈕 -->
 		<div>
-			<button class="back-button"
+			<button class="back-button" style="cursor: pointer"
 				onclick="window.location.href='../../jsp/fitness/index.jsp'">返回</button>
 		</div>
 	</div>
