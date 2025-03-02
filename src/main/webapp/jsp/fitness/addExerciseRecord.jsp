@@ -12,47 +12,51 @@
 <style>
 /* 讓文字內容的td寬度不會過大 */
 table td {
-    text-align: justify;
-    word-spacing: 18px;
-    padding-left: 10px;
-    padding-right: 10px;
-    white-space: nowrap; /* 防止文字換行 */
+	text-align: justify;
+	word-spacing: 18px;
+	padding-left: 10px;
+	padding-right: 10px;
+	white-space: nowrap; /* 防止文字換行 */
 }
 
 /* 為包含文字的 td 設置固定的寬度 */
-table td:first-child { 
-    width: 20%; /* 可以根據需要調整寬度 */
+table td:first-child {
+	width: 20%; /* 可以根據需要調整寬度 */
 }
 
 /* 讓表單元素 (例如 textarea) 寬度為100% */
 table td input, table td select, table td textarea {
-    width: 100% !important; /* 強制將寬度設置為100% */
-    padding: 8px;
-    font-size: 1em;
-    box-sizing: border-box; /* 計算邊框和內邊距 */
+	width: 100% !important; /* 強制將寬度設置為100% */
+	padding: 8px;
+	font-size: 1em;
+	box-sizing: border-box; /* 計算邊框和內邊距 */
 }
 
 /* 針對textarea設置特殊寬度 */
 textarea {
-    width: 100% !important; /* 強制將寬度設置為100% */
-    padding: 8px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    box-sizing: border-box; /* 計算邊框和內邊距 */
+	width: 100% !important; /* 強制將寬度設置為100% */
+	padding: 8px;
+	font-size: 1em;
+	border: 1px solid #ccc;
+	box-sizing: border-box; /* 計算邊框和內邊距 */
 }
 
-button {
-	padding: 10px 20px;
-	background-color: #777;
+button[type="submit"] {
+	background-color: #5d615d;
+	color: white;
+	padding: 5px 10px;
+	border: none;
+	cursor: pointer;
+	border-radius: 2px;
 	color: white;
 	border: none;
 	cursor: pointer;
-	width: 200px; 
+	width: 200px;
 	font-size: 1em;
 }
 
-button:hover {
-	background-color: #33;
+button[type="submit"]:hover {
+	background-color: #868B86;
 }
 </style>
 
@@ -91,7 +95,7 @@ button:hover {
 			<input type="hidden" name="action" value="add">
 			<table border="1" id="">
 				<tr>
-					<td>用 戶  I  D：</td>
+					<td>用 戶 I D：</td>
 					<td><input type="text" name="userId" required
 						placeholder="Enter User ID"></td>
 				</tr>

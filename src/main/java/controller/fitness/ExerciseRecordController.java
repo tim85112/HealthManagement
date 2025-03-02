@@ -206,6 +206,7 @@ public class ExerciseRecordController extends HttpServlet {
         try {
             String recordIdStr = request.getParameter("recordId");
             String userIdStr = request.getParameter("userId");
+            String action= request.getParameter("action");
 
             if (recordIdStr == null || recordIdStr.isEmpty() || userIdStr == null || userIdStr.isEmpty()) {
                 throw new ServletException("刪除操作缺少必要的參數");
