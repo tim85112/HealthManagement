@@ -3,8 +3,10 @@
 <!-- 發表文章按鈕 -->
 <a href="?showInsert=true">發表文章</a>
 <jsp:include page="header.jsp" />
-<% boolean showInsertForm = "true".equals(request.getParameter("showInsert")); %>
-<% if (showInsertForm) { %>
+<%
+    boolean showInsertForm = "true".equals(request.getParameter("showInsert"));
+    if (showInsertForm) {
+%>
     <div>
         <h2>發表文章</h2>
         <form action="${pageContext.request.contextPath}/api/Social/post" method="post">
