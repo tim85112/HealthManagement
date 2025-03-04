@@ -31,7 +31,6 @@
 		</ul>
 	</div>
 	<br>
-<body>
 	<div align="center" id="content">
 		<h1>更新運動紀錄</h1>
 
