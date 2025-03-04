@@ -34,5 +34,18 @@ public class SocialService {
         socialDAO.deletePost(articleId);
     }
 
+    public SocialPost getPostById(int articleId) {
+        return socialDAO.getPostById(articleId);
+    }
+    
+    public int getPreviousArticleId(int articleId) {
+        return socialDAO.getPreviousArticleId(articleId);
+    }
+
+    public int getNextArticleId(int articleId) {
+        return socialDAO.getNextArticleId(articleId);
+    }
+ 
+    
 }
 

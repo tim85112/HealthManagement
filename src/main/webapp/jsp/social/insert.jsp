@@ -2,7 +2,7 @@
 
 <!-- 發表文章按鈕 -->
 <a href="?showInsert=true">發表文章</a>
-
+<jsp:include page="header.jsp" />
 <% boolean showInsertForm = "true".equals(request.getParameter("showInsert")); %>
 <% if (showInsertForm) { %>
     <div>

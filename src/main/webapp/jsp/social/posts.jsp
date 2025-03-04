@@ -161,6 +161,23 @@
             color: white;
         }
         
+        /* 🔹 文章框（post-item）確保內文不會超出 */
+.post-item {
+    max-width: 100%; /* ✅ 確保框不會超出父容器 */
+    overflow: hidden; /* ✅ 避免內容溢出 */
+}
+
+/* 🔹 限制內文範圍，確保自動換行 */
+.preview {
+display: inline; /* ✅ 讓整個內文區塊與「閱讀更多」按鈕在同一行 */
+    word-wrap: break-word; /* ✅ 碰到長單字會自動換行 */
+    overflow-wrap: break-word; /* ✅ 確保所有瀏覽器都支援換行 */
+    white-space: pre-wrap; /* ✅ 保持原始的換行格式 */
+    max-width: 100%; /* ✅ 內容不會超出框 */
+}
+        
+        
+        
     </style>
 </head>
 <body>
@@ -172,47 +189,72 @@
 
     <div id="navigation">
         <ul>
-            <li><a href="HealthManagement.jsp">首頁</a></li>
-            <li><a href="#">會員管理</a></li>
-            <li><a href="#">商城購物</a></li>
-            <li><a href="#">健身成效</a></li>
-            <li><a href="index.jsp" class="active">社群論壇</a></li>
+        <li><a href="http://localhost:8080/HealthManagement/jsp/course/HealthManagement.jsp">首頁</a></li>
+        <li><a href="http://localhost:8080/HealthManagement/jsp/membercenter.jsp">會員管理</a></li>
+        <li><a href="http://localhost:8080/HealthManagement/product.html">商城購物</a></li>
+        <li><a href="http://localhost:8080/HealthManagement/jsp/fitness/index.jsp">健身成效</a></li>
+        <li><a href="http://localhost:8080/HealthManagement/jsp/course/index.jsp">課程管理</a></li>
+        <li><a href="http://localhost:8080/HealthManagement/api/Social/post" class="active">社群論壇</a></li>
+
         </ul>
     </div>
 
     <div id="content">
-        <h1>社群論壇</h1>
+        <h1>發表文章</h1>
 
         <div class="buttons-container">
-            <button onclick="openInsertModal()">發表文章</button>
+            <button onclick="openInsertModal()">建立</button>
             <jsp:include page="search.jsp" />
         </div>
 
         <hr>
 
-        <ul id="postList">
-            <% for (int i = startIndex; i < endIndex; i++) { %>
-                <% SocialPost post = posts.get(i); %>
-                <li class="post-item" data-id="<%= post.getArticleId() %>">
+<ul id="postList">
+    <% for (int i = startIndex; i < endIndex; i++) { 
+        SocialPost post = posts.get(i);
 
-                    <!-- 🔹 修改與刪除 -->
-                    <div class="post-actions">
-                        <button onclick="openEditModal('<%= post.getArticleId() %>', '<%= post.getTitle() %>', '<%= post.getContent() %>')">修改</button>
-                        <jsp:include page="delete.jsp">
-                            <jsp:param name="articleId" value="<%= post.getArticleId() %>" />
-                        </jsp:include>
-                    </div>
+    %>
+        
+        <li class="post-item" data-id="<%= post.getArticleId() %>">
 
-                    <h3><%= post.getTitle() %></h3>
-                    <p><%= post.getContent() %></p>
+            <!-- 🔹 修改與刪除 -->
+            <div class="post-actions">
+                <button onclick="openEditModal('<%= post.getArticleId() %>', '<%= post.getTitle() %>', '<%= post.getContent() %>')">修改</button>
+                <jsp:include page="delete.jsp">
+                    <jsp:param name="articleId" value="<%= post.getArticleId() %>" />
+                </jsp:include>
+            </div>
 
-                    <div class="post-meta">
-                        <img src="${pageContext.request.contextPath}/images/user.svg" alt="User" width="16px" height="16px"> <%= post.getUserId() %>
-                        <img src="${pageContext.request.contextPath}/images/clock.svg" alt="Clock" width="16px" height="16px"> <%= post.getFormattedPublishDate() %>
-                    </div>
-                </li>
-            <% } %>
-        </ul>
+            <!-- 🔹 文章標題 (可點擊進入完整文章) -->
+            <h3>
+                <a href="${pageContext.request.contextPath}/jsp/social/postDetail.jsp?articleId=<%= post.getArticleId() %>">
+                    <%= post.getTitle() %>
+                </a>
+            </h3>
+
+            <!-- 🔹 文章預覽 (最多 100 個字) -->
+<p class="preview">
+    <% 
+        String content = post.getContent();
+        boolean isLongContent = content.length() > 100;
+        String previewText = isLongContent ? content.substring(0, 100).trim() : content; // 移除末尾空格，確保 `...` 緊貼內文
+    %>
+    <%= previewText %><% if (isLongContent) { %><span class="ellipsis">...</span><a href="${pageContext.request.contextPath}/jsp/social/postDetail.jsp?articleId=<%= post.getArticleId() %>" class="read-more">閱讀更多</a><% } %>
+</p>
+
+
+        
+            <!-- 🔹 文章資訊 -->
+               <div class="post-meta">
+                   <img src="${pageContext.request.contextPath}/images/user.svg" alt="User" width="16px" height="16px"> <%= post.getUserId() %>
+                   <img src="${pageContext.request.contextPath}/images/clock.svg" alt="Clock" width="16px" height="16px"> <%= post.getFormattedPublishDate() %>
+              </div>
+
+        </li>
+    <% } %>
+</ul>
+
+        
         
         <!-- ✅ 分頁功能 (獨立出來，不會重複) -->
         <div class="pagination">
@@ -280,7 +322,7 @@
 
             <hr>
     <div id="footer">
-        <p>© 2025 健康管理系統. All Rights Reserved.</p>
+        <p>&copy; 2025 享健你. 讓運動成為習慣，遇見更好的自己。</p>
     </div>
 
     <script>

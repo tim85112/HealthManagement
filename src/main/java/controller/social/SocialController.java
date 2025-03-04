@@ -40,5 +40,11 @@ public class SocialController extends HttpServlet {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "❌ 伺服器錯誤: 無法新增文章");
         }
     }
+    @Override
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int articleId = Integer.parseInt(request.getParameter("articleId"));
+        socialService.deletePost(articleId);
+        response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+    }
 }
 

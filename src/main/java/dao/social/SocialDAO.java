@@ -32,7 +32,7 @@ public class SocialDAO {
 
     public List<SocialPost> getAllPosts() {
         List<SocialPost> posts = new ArrayList<>();
-        String sql = "SELECT article_id, title, content, user_id, publish_date FROM social_posts ORDER BY publish_date DESC";
+        String sql = "SELECT article_id, title, content, user_id, publish_date FROM social_posts ORDER BY article_id DESC"; // 按 article_id 由大到小排序
 
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
@@ -109,6 +109,62 @@ public class SocialDAO {
         }
     }
     
-    
+  //文章
+    public SocialPost getPostById(int articleId) {
+        String sql = "SELECT * FROM social_posts WHERE article_id = ?";
+        
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+            stmt.setInt(1, articleId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return new SocialPost(
+                    rs.getInt("article_id"),
+                    rs.getString("title"),
+                    rs.getString("content"),
+                    rs.getInt("user_id"),
+                    rs.getTimestamp("publish_date")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return null; // 找不到文章時回傳 null
+    }
+    //文章上下頁
+    public int getPreviousArticleId(int currentId) {
+        String sql = "SELECT MAX(article_id) FROM social_posts WHERE article_id < ?";
+
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, currentId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1; // 沒有上一篇
+    }
+
+    public int getNextArticleId(int currentId) {
+        String sql = "SELECT MIN(article_id) FROM social_posts WHERE article_id > ?";
+
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, currentId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1; // 沒有下一篇
+    }
 
 }
