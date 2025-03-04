@@ -1,94 +1,143 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Exercise Record</title>
-    <style>
-        /* 表單樣式 */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<title>享健你，遇見更好的自己．</title>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/styles/gymstyle.css">
+<style>
+/* 讓文字內容的td寬度不會過大 */
+table td {
+	text-align: justify;
+	word-spacing: 18px;
+	padding-left: 10px;
+	padding-right: 10px;
+	white-space: nowrap; /* 防止文字換行 */
+}
 
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-        }
+/* 為包含文字的 td 設置固定的寬度 */
+table td:first-child {
+	width: 20%; /* 可以根據需要調整寬度 */
+}
 
-        form {
-            margin: 20px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+/* 讓表單元素 (例如 textarea) 寬度為100% */
+table td input, table td select, table td textarea {
+	width: 100% !important; /* 強制將寬度設置為100% */
+	padding: 8px;
+	font-size: 1em;
+	box-sizing: border-box; /* 計算邊框和內邊距 */
+}
 
-        label {
-            display: block;
-            margin: 5px 0;
-        }
+/* 針對textarea設置特殊寬度 */
+textarea {
+	width: 100% !important; /* 強制將寬度設置為100% */
+	padding: 8px;
+	font-size: 1em;
+	border: 1px solid #ccc;
+	box-sizing: border-box; /* 計算邊框和內邊距 */
+}
 
-        input, select {
-            width: 100%;
-            padding: 8px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
+button[type="submit"] {
+	background-color: #5d615d;
+	color: white;
+	padding: 5px 10px;
+	border: none;
+	cursor: pointer;
+	border-radius: 2px;
+	color: white;
+	border: none;
+	cursor: pointer;
+	width: 200px;
+	font-size: 1em;
+}
 
-        button {
-            padding: 10px 20px;
-            background-color: #6D91A0;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+button[type="submit"]:hover {
+	background-color: #868B86;
+}
+</style>
 
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
 </head>
 <body>
+	<div id="header">
+		<h1>享健你，遇見更好的自己．</h1>
+		<h2>你，今天健了嗎？</h2>
+	</div>
 
-    <h1>Add New Exercise Record</h1>
+	<!-- ✅ 導覽列 -->
+	<div id="navigation">
+		<ul>
+			<li><a
+				href="http://localhost:8080/HealthManagement/jsp/course/HealthManagement.jsp">首頁</a></li>
+			<li><a
+				href="http://localhost:8080/HealthManagement/jsp/membercenter.jsp"
+				class="active">會員管理</a></li>
+			<li><a href="#">商城購物</a></li>
+			<li><a
+				href="http://localhost:8080/HealthManagement/jsp/fitness/index.jsp">健身成效</a></li>
+			<li><a
+				href="http://localhost:8080/HealthManagement/jsp/course/index.jsp">課程管理</a></li>
+			<li><a
+				href="http://localhost:8080/HealthManagement/api/Social/post">社群論壇</a></li>
+			<!-- ✅ 修正網址 -->
+		</ul>
+	</div>
+	<br>
+<body>
+	<div id="content" align="center">
+		<h1>新增運動單筆紀錄</h1>
 
-    <!-- 用戶輸入 User ID 並添加運動紀錄 -->
-    <form action="../../api/fitness/progress" method="post">
-        <input type="hidden" name="action" value="add">
+		<!-- 用戶輸入 User ID 並添加運動紀錄 -->
+		<form action="../../api/fitness/progress" method="post">
+			<input type="hidden" name="action" value="add">
+			<table border="1" id="">
+				<tr>
+					<td>用 戶 I D：</td>
+					<td><input type="text" name="userId" required
+						placeholder="Enter User ID"></td>
+				</tr>
+				<tr>
+					<td>運 動 類 型：</td>
+					<td><select name="exerciseType" required>
+							<option value="瑜伽" selected>瑜伽 (Yoga)</option>
+							<option value="重訓">重訓 (Weight Training)</option>
+							<option value="有氧">有氧 (Cardio)</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>運 動 時 長(分鐘)：</td>
+					<td><input type="number" name="exerciseDuration" required
+						placeholder="Enter Duration" value="20"></td>
+				</tr>
+				<tr>
+					<td>運 動 日 期：</td>
+					<td><input type="date" name="exerciseDate" required
+						id="exerciseDate"></td>
+				</tr>
 
-        <label for="userId">User ID:</label>
-        <input type="number" name="userId" required placeholder="Enter User ID">
+			</table>
 
-        <label for="exerciseType">Exercise Type:</label>
-        <select name="exerciseType" required>
-            <option value="瑜伽" selected>瑜伽 (Yoga)</option>
-            <option value="重訓">重訓 (Weight Training)</option>
-            <option value="有氧">有氧 (Cardio)</option>
-        </select>
+			<button type="submit">確認</button>
 
-        <label for="exerciseDuration">Duration (minutes):</label>
-        <input type="number" name="exerciseDuration" required placeholder="Enter Duration" value="20">
+		</form>
 
-        <label for="exerciseDate">Exercise Date:</label>
-        <input type="date" name="exerciseDate" required id="exerciseDate">
 
-        <button type="submit">Add Record</button>
-    </form>
+		<script>
+			// 獲取當天日期
+			const today = new Date().toISOString().split('T')[0]; // 轉換為 'YYYY-MM-DD' 格式
+			document.getElementById('exerciseDate').value = today; // 設置為 input 的預設值
+		</script>
 
-    <script>
-        // 獲取當天日期
-        const today = new Date().toISOString().split('T')[0]; // 轉換為 'YYYY-MM-DD' 格式
-        document.getElementById('exerciseDate').value = today; // 設置為 input 的預設值
-    </script>
+		<!-- 返回主畫面的按鈕 -->
+		<a href="http://localhost:8080/HealthManagement/jsp/fitness/index.jsp"
+			class="back-button">返回</a>
+	</div>
 
+	<div id="footer">
+		<p>&copy; 2025 享健你. All Rights Reserved.</p>
+	</div>
 </body>
 </html>

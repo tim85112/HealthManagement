@@ -10,27 +10,38 @@
 <title>享健你，遇見更好的自己．</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/styles/gymstyle.css">
-</head>
-<style>
+<style type="text/css">
 .update {
-    background-color:#c5c9a3;
-    color: white; /* 文字顏色為白色 */
-    padding: 12px 20px; /* 增加內邊距，使按鈕更大 */
-    border-radius: 3px; /* 讓按鈕邊角變圓 */
-    font-size: 1em; /* 字體大小 */
-    cursor: pointer;
+	background-color: #c5c9a3;
+	color: white; /* 文字顏色為白色 */
+	padding: 12px 20px; /* 增加內邊距，使按鈕更大 */
+	border-radius: 3px; /* 讓按鈕邊角變圓 */
+	font-size: 1em; /* 字體大小 */
 }
 
 .update:hover {
-    background-color: #e3ebae; /* 滑鼠懸停時的顏色變化 */
+	background-color: #e3ebae; /* 滑鼠懸停時的顏色變化 */
 }
 
 input[type="submit"] {
-  border-radius: 3px; 
+	border-radius: 3px;
 }
 
+button[type="submit"] {
+	background-color: #5d615d;
+	color: white;
+	padding: 5px 10px;
+	border: none;
+	cursor: pointer;
+	border-radius:3px;
+	font-size: 13px
+}
 
+button[type="submit"]:hover {
+	background-color: #868B86;
+}
 </style>
+</head>
 <body>
 	<div id="header">
 		<h1>享健你，遇見更好的自己．</h1>
@@ -54,10 +65,9 @@ input[type="submit"] {
 				href="http://localhost:8080/HealthManagement/api/Social/post">社群論壇</a></li>
 		</ul>
 	</div>
-	<div id="content" align="center">
+	<div align="center">
 
 		<h1>運動紀錄</h1>
-
 		<!-- 顯示錯誤訊息 -->
 		<c:if test="${not empty errorMessage}">
 			<div class="error-message">
@@ -67,7 +77,7 @@ input[type="submit"] {
 
 		<!-- 顯示成功訊息 -->
 		<c:if test="${not empty successMessage}">
-			<div class="alert-success">
+			<div style="color: #808080;">
 				<c:choose>
 					<c:when test="${successMessage == 'Record Deleted Successfully'}">
 						<strong>Success:</strong> Record Deleted Successfully
@@ -78,6 +88,27 @@ input[type="submit"] {
 				</c:choose>
 			</div>
 		</c:if>
+		<!-- 查詢運動紀錄 -->
+		<form action="../../api/fitness/progress" method="get">
+			<div>
+				<label for="userId">用戶 I D :</label> <input type="text"
+					name="userId" placeholder="Enter User ID">
+				<button type="submit">查詢</button>
+			</div>
+			<br> <br>
+			<div>
+				<label for="name">用戶名字:</label> <input type="text" name="name"
+					placeholder="Enter User Name">
+				<button type="submit">查詢</button>
+			</div>
+
+		</form>
+		<!-- 如果兩者都沒填，顯示錯誤訊息 -->
+		<c:if test="${not empty search}">
+			<strong style="color: red;">${search}</strong>
+		</c:if>
+
+
 
 		<!-- 顯示運動紀錄 -->
 		<c:if test="${not empty records}">
@@ -126,14 +157,11 @@ input[type="submit"] {
 			</div>
 		</c:if>
 
-		<c:if test="${empty records}">
-			<p>No records found for the given User ID.</p>
-			<p>該用戶沒有運動紀錄</p>
-		</c:if>
-
 		<!-- 返回主畫面的按鈕 -->
-		<button class="back-button" style="cursor: pointer"
-			onclick="window.location.href='../../jsp/fitness/index.jsp'">返回</button>
+		<div>
+			<button class="back-button" style="cursor: pointer"
+				onclick="window.location.href='../../jsp/fitness/index.jsp'">返回</button>
+		</div>
 	</div>
 	<div id="footer">
 		<p>&copy; 2025 享健你. All Rights Reserved.</p>

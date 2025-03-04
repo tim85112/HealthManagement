@@ -1,75 +1,103 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise Records</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<title>享健你，遇見更好的自己．</title>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/styles/gymstyle.css">
+<style>
+#content ul {
+    list-style-type: none; /* 去除預設的列表樣式 */
+    padding: 0;
+    margin: 0;
+}
 
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-        }
+#content li {
+    margin-bottom: 15px; /* 按鈕之間的垂直間距 */
+}
 
-        form {
-            margin: 20px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+#content form {
+    display: block; /* 讓表單顯示為區塊元素 */
+    width: 100%; /* 確保表單寬度填滿容器 */
+}
 
-        label {
-            display: block;
-            margin: 5px 0;
-        }
+#content button {
+    display: inline-block; /* 讓按鈕顯示為行內塊級元素 */
+    padding: 10px 20px; /* 調整按鈕內邊距 */
+    background-color: #777; /* 按鈕背景顏色 */
+    color: white; /* 文字顏色 */
+    border: none; /* 去除按鈕邊框 */
+    cursor: pointer; /* 讓按鈕顯示為可點擊 */
+    text-align: center; /* 文字置中 */
+    width: 100%; /* 按鈕填滿父容器的寬度 */
+    max-width: 300px; /* 限制按鈕的最大寬度 */
+}
 
-        input, select {
-            width: 100%;
-            padding: 8px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
+#content button:hover {
+    background-color: #333; /* 按鈕 hover 效果 */
+}
 
-        button {
-            padding: 10px 20px;
-            background-color: #45a086;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
 
-        button:hover {
-            background-color: lightgreen;
-        }
-    </style>
+</style>
 </head>
 <body>
-    <h1>Exercise Records</h1>
+	<div id="header">
+		<h1>享健你，遇見更好的自己．</h1>
+		<h2>你，今天健了嗎？</h2>
+	</div>
 
-    <!-- 新增運動紀錄的按鈕 -->
-    <form action=../../jsp/fitness/addExerciseRecord.jsp method="get">
-        <button type="submit">Add Exercise Record</button>
-    </form>
+	<!-- ✅ 導覽列 -->
+	<div id="navigation">
+		<ul>
+			<li><a
+				href="http://localhost:8080/HealthManagement/jsp/course/HealthManagement.jsp">首頁</a></li>
+			<li><a
+				href="http://localhost:8080/HealthManagement/jsp/membercenter.jsp"
+				class="active">會員管理</a></li>
+			<li><a href="#">商城購物</a></li>
+			<li><a
+				href="http://localhost:8080/HealthManagement/jsp/fitness/index.jsp">健身成效</a></li>
+			<li><a
+				href="http://localhost:8080/HealthManagement/jsp/course/index.jsp">課程管理</a></li>
+			<li><a
+				href="http://localhost:8080/HealthManagement/api/Social/post">社群論壇</a></li>
+			<!-- ✅ 修正網址 -->
+		</ul>
+	</div>
+	<br>
+	<div align="center">
+		<h2>運動數據記錄</h2>
+		<div id="content">
+		<ul>
+			<!-- 新增運動紀錄的按鈕 -->
+			<li>
+				<form action=../../jsp/fitness/addExerciseRecord.jsp method="get">
+					<button type="submit">新增運動紀錄</button>
+				</form>
+			</li><hr>
 
-    <!-- 查詢運動紀錄 -->
-    <form action=../../api/fitness/progress method="get">
-        <label for="userId">User ID:</label>
-        <input type="number" name="userId" required placeholder="Enter User ID">
-        <button type="submit">Search</button>
-    </form>
+			<!-- 查詢運動紀錄 -->
+			<li>
+				<form action=../../jsp/fitness/findUserRecords.jsp method="get">
+					<button type="submit">查詢用戶紀錄</button>
+				</form>
+			</li><hr>
+
+			<!-- 查詢所有用戶運動紀錄 -->
+			<li>
+				<form action=../../api/fitness/progress method="get">
+					<button type="submit" name="action" value="all">所有用戶紀錄</button>
+				</form>
+			</li><hr>
+		</ul>
+	</div>
+	</div>
+	<div id="footer">
+		<p>&copy;  2025 享健你. All Rights Reserved.</p>
+	</div>
 </body>
 </html>

@@ -1,35 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">
-            /* 返回主畫面的按鈕樣式 */
-     .back-button {
-            padding: 10px 20px;
-            background-color: #459CA0;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            display: block; /* 改為區塊元素，會自動排列在上方內容後 */
-            margin-top: 20px; /* 可增加與報錯訊息的間距 */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
+<meta charset="UTF-8">
+<title>享健你，遇見更好的自己．</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/gymstyle.css">
+<style>
 
-        .back-button:hover {
-            background-color: skyblue;
-        }</style>
-    <title>Error</title>
+</style>
 </head>
+<body>
+    <div id="header">
+        <h1>享健你，遇見更好的自己．</h1>
+        <h2>你，今天健了嗎？</h2>
+    </div>
+
+    <!-- ✅ 導覽列 -->
+    <div id="navigation">
+		<ul>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/course/HealthManagement.jsp">首頁</a></li>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/membercenter.jsp" class="active">會員管理</a></li>
+			<li><a href="#">商城購物</a></li>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/fitness/index.jsp">健身成效</a></li>
+			<li><a href="http://localhost:8080/HealthManagement/jsp/course/index.jsp">課程管理</a></li>
+            <li><a href="http://localhost:8080/HealthManagement/api/Social/post">社群論壇</a></li> <!-- ✅ 修正網址 -->
+		</ul>
+    </div>
+	<br>
 <body>
     <h1>Error</h1>
     <p>${errorMessage}</p>
 
-<button class="back-button" onclick="window.location.href='../../jsp/fitness/index.jsp'">Back To Home</button>
+<button class="back-button" onclick="window.location.href='../../jsp/fitness/index.jsp'">返回</button>
     
-        
+             <div id="footer">
+        <p>&copy; 2025 享健你. All Rights Reserved.</p>
 </body>
 </html>
