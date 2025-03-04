@@ -73,11 +73,10 @@ button[type="submit"]:hover {
 			<li><a
 				href="http://localhost:8080/HealthManagement/jsp/course/HealthManagement.jsp">首頁</a></li>
 			<li><a
-				href="http://localhost:8080/HealthManagement/jsp/membercenter.jsp"
-				class="active">會員管理</a></li>
-			<li><a href="#">商城購物</a></li>
+				href="http://localhost:8080/HealthManagement/jsp/membercenter.jsp">會員管理</a></li>
+			<li><a href="http://localhost:8080/HealthManagement/product.html">商城購物</a></li>
 			<li><a
-				href="http://localhost:8080/HealthManagement/jsp/fitness/index.jsp">健身成效</a></li>
+				href="http://localhost:8080/HealthManagement/jsp/fitness/index.jsp"  class="active">健身成效</a></li>
 			<li><a
 				href="http://localhost:8080/HealthManagement/jsp/course/index.jsp">課程管理</a></li>
 			<li><a
