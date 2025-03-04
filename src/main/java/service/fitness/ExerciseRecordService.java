@@ -72,7 +72,7 @@ public class ExerciseRecordService {
 				if (rs.next()) {
 					return rs.getDouble("Weight");
 				} else {
-					throw new SQLException("No weight found for user ID: " + userId);
+					throw new SQLException("user ID: " + userId +" 請先輸入體重");
 				}
 			}
 		}

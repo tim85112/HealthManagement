@@ -97,7 +97,7 @@
 	</div>
 	</div>
 	<div id="footer">
-		<p>&copy; 2025 享健你. 讓運動成為習慣，遇見更好的自己。</p>
+		<p>&copy;  2025 享健你. All Rights Reserved.</p>
 	</div>
 </body>
 </html>
