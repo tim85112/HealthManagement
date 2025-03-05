@@ -19,6 +19,26 @@ input[type="email"], textarea {
     font-size: 1em;
     border: 1px solid #ccc;
 }
+button[type="submit"] {
+    background-color: #808080;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+button[type="submit"]:hover {
+    background-color: #c0c0c0;
+}
+button[type="button"] {
+    background-color: #808080;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+button[type="button"]:hover {
+    background-color: #c0c0c0;
+}
 </style>
 </head>
 <body>

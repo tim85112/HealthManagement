@@ -7,7 +7,19 @@
 <meta charset="UTF-8">
 <title>享健你，遇見更好的自己．</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/gymstyle.css">
+    <!-- 引入 jQuery 和 jQuery UI 的 CSS 和 JS -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 </head>
+<style>
+input[type="date"], textarea {
+    width: 50%;
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+}
+</style>
 <body>
     <div id="header">
         <h1>享健你，遇見更好的自己．</h1>
@@ -47,7 +59,7 @@
                 </tr>
                 <tr>
                     <td>課程日期：</td>
-                    <td><input type="text" name="course_date" value="${course.course_date}" required></td>
+                    <td><input type="date" name="course_date" value="${course.course_date}" required></td>
                 </tr>
                 <tr>
                     <td>教練編號：</td>
@@ -70,10 +82,21 @@
             <input type="submit" value="確定" />
         </form>
         <br>
-        <a href="http://localhost:8080/HealthManagement/jsp/course/index.jsp" class="back-button">返回</a>
+        <a href="http://localhost:8080/HealthManagement/jsp/course/index.jsp" class="back-button">返回課程管理</a>
     </div>
     <div id="footer">
         <p>© 2025 健康管理系統. All Rights Reserved.</p>
     </div>
 </body>
+<script>
+    $(document).ready(function(){
+        // 將 'course_date' 的 input 元素初始化為日期選擇器
+        $("input[name='course_date']").datepicker({
+            dateFormat: "yy-mm-dd",  // 設定日期格式
+            changeMonth: true,  // 可以選擇月份
+            changeYear: true,   // 可以選擇年份
+            showButtonPanel: true  // 顯示按鈕面板
+        });
+    });
+</script>
 </html>

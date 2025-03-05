@@ -16,6 +16,18 @@
     <!-- ✅ 引入 gymstyle.css -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/gymstyle.css">
 </head>
+<style>
+button[type="submit"] {
+    background-color: #808080;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+button[type="submit"]:hover {
+    background-color: #c0c0c0;
+}
+</style>
 <body>
     <!-- ✅ 標題區 -->
     <div id="header">
@@ -26,7 +38,7 @@
     <div id="navigation">
 		<ul>
             <li><a href="http://localhost:8080/HealthManagement/jsp/course/HealthManagement.jsp" >首頁</a></li>
-            <li><a href="http://localhost:8080/HealthManagement/jsp/membercenter.jsp"  class="active">會員管理</a></li>
+            <li><a href="http://localhost:8080/HealthManagement/jsp/manage.jsp"  class="active">會員管理</a></li>
             <li><a href="http://localhost:8080/HealthManagement/product.html">商城購物</a></li>
             <li><a href="http://localhost:8080/HealthManagement/jsp/fitness/index.jsp">健身成效</a></li>
             <li><a href="http://localhost:8080/HealthManagement/jsp/course/index.jsp">課程管理</a></li>

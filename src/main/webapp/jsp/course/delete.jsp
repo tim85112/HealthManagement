@@ -43,14 +43,14 @@
 		<%=errorMessage%>
 	</div>
 	<% } %>
-		<p>
-			請輸入課程編號：<input type="text" name="course_id" required /> <input
-				type="submit" value="確定" />
-		</p>
 	</form>
 	<br>
-	<a href="http://localhost:8080/HealthManagement/jsp/course/index.jsp"
-		class="back-button">返回</a>
+					<form method="post"
+						action="${pageContext.request.contextPath}/CourseDAO2">
+						<input type="hidden" name="action" value="findAll"> <input
+							type="submit" value="返回上一頁">
+					</form><br>
+					<a href="http://localhost:8080/HealthManagement/jsp/course/index.jsp" class="back-button">返回課程管理</a>
 </div>
 <div id="footer">
 	<p>© 2025 健康管理系統. All Rights Reserved.</p>

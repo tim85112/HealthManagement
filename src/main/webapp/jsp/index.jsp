@@ -12,6 +12,34 @@
     <!-- ✅ 引入 gymstyle.css -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/gymstyle.css">
 </head>
+<style>
+input[type="password"], textarea {
+    width: 50%;
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+}
+button[type="submit"] {
+    background-color: #808080;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+button[type="submit"]:hover {
+    background-color: #c0c0c0;
+}
+button[type="button"] {
+    background-color: #808080;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+button[type="button"]:hover {
+    background-color: #c0c0c0;
+}
+</style>
 <body>
 
     <!-- ✅ 標題區 -->

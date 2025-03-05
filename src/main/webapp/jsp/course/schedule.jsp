@@ -76,7 +76,7 @@
             </table>
         </form>
         <br>
-        <a href="http://localhost:8080/HealthManagement/jsp/course/index.jsp" class="back-button">返回</a>
+        <a href="http://localhost:8080/HealthManagement/jsp/course/index.jsp" class="back-button">返回課程管理</a>
     </div>
         <div id="footer">
         <p>© 2025 健康管理系統. All Rights Reserved.</p>

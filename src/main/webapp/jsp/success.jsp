@@ -19,7 +19,7 @@
     <div id="navigation">
 		<ul>
             <li><a href="http://localhost:8080/HealthManagement/jsp/course/HealthManagement.jsp" >首頁</a></li>
-            <li><a href="http://localhost:8080/HealthManagement/jsp/membercenter.jsp"  class="active">會員管理</a></li>
+            <li><a href="http://localhost:8080/HealthManagement/jsp/manage.jsp"  class="active">會員管理</a></li>
             <li><a href="http://localhost:8080/HealthManagement/product.html">商城購物</a></li>
             <li><a href="http://localhost:8080/HealthManagement/jsp/fitness/index.jsp">健身成效</a></li>
             <li><a href="http://localhost:8080/HealthManagement/jsp/course/index.jsp">課程管理</a></li>
@@ -28,7 +28,7 @@
     </div>
     <div id="content" align="center">
     <br><br>
-    <h2>刪除成功！</h2>
+    <h2>註冊成功！</h2>
     <br>
     <a href="manage.jsp">回會員管理</a>
     </div>
